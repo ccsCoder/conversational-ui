@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+body, .img-container {
+  position: relative;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1b262c;
+}
+
+.img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.img-container img.hide{
+  height: 1px;
+  width: 1px;
+}
+
+.img-container img.show {
+  height: 100%;
+  width: 100%;
+  animation: zoomIn;
+  animation-duration: 1s;
+}
+
+header {
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  z-index: 5;
+  background-color: black;
+  opacity: .7;
+}
+
+h1, h2 {
+  position: absolute;
+  color: #ed6663;
+  z-index: 6;
+  margin-left: 30px;
+  opacity: 1;
+  /* color: white; */
+  font-size: 2.5rem;
+  font-weight: normal;
+  text-shadow: 0px 0px 7px black;
+}
+
+
+.icon-tabler-microphone {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  color: white;
+  z-index: 6;
+}
+
+.toast-message {
+  position: absolute;
+  width: 100%;
+  top: 90%;
+  left: 0;
+  text-align: center;
+  /* transform: translate(0, -50%); */
+  color: white;
+  font-size: 2rem;
+  transition: all ease-in-out .5s;
+}
+
+.toast-message.show-toast {
+  top: 90%;
+}
+
+.hide-toast {
+  top: calc(100% + 30px);
+}
+
+.toast-message > span {
+  background: black;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+}
+
+@keyframes mic-listening {
+  0% {
+    transform: scale3d(1 ,1 , 1);
+  }
+
+  50% {
+    transform: scale3d(1.2, 1.2, 0);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.mic-listening {
+  animation: mic-listening;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-duration: .8s;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen
+  and (max-width: 400px) {
+    header {
+      height: 75px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    svg.icon {
+      height: 30px;
+      width: 30px;
+    }
+
+    .toast-message {
+      font-size: 1.2rem;
+    }
+
+    .toast-message > span {
+      display: block;
+    }
+  }
