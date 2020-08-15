@@ -8,6 +8,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
   />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="js/index.js"></script>
   <title>Image Navigator, Full screen carousel</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
   </header>
   <h1>Nature Images</h1>
   <!-- Microphone icon -->
-  <svg xmlns="http://www.w3.org/2000/svg" title="click and speak Next / Prev to navigate" class="icon icon-tabler icon-tabler-microphone" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <svg aria-role="button" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z"/>
     <rect x="9" y="2" width="6" height="11" rx="3" />
     <path d="M5 10a7 7 0 0 0 14 0" />
@@ -24,40 +25,33 @@
   </svg>
   <main class="img-container">
     <picture>
-      <source media="(max-width: 400px)" srcset="res/img00001.jpg">
+      <source media="(hover: none) and (pointer: coarse)" srcset="res/img00001.jpg">
       <img class="animate__animated show" src="res/pic00001.jpg" alt="A lighthouse at night project light out in the sky" />
     </picture>
     <picture>
-      <source media="(max-width: 400px)" srcset="res/img00002.jpg">
+      <source media="(hover: none) and (pointer: coarse)" srcset="res/img00002.jpg">
       <img class="animate__animated hide" src="res/pic00002.jpg" alt="A lighthouse at night project light out in the sky" />
     </picture>
     <picture>
-      <source media="(max-width: 400px)" srcset="res/img00003.jpg">
+      <source media="(hover: none) and (pointer: coarse)" srcset="res/img00003.jpg">
       <img class="animate__animated hide" src="res/pic00003.jpg" alt="A lighthouse at night project light out in the sky" />
     </picture>
     <picture>
-      <source media="(max-width: 400px)" srcset="res/img00004.jpg">
+      <source media="(hover: none) and (pointer: coarse)" srcset="res/img00004.jpg">
       <img class="animate__animated hide" src="res/pic00004.jpg" alt="A lighthouse at night project light out in the sky" />
     </picture>
     <picture>
-      <source media="(max-width: 400px)" srcset="res/img00005.jpg">
+      <source media="(hover: none) and (pointer: coarse)" srcset="res/img00005.jpg">
       <img class="animate__animated hide" src="res/pic00005.jpg" alt="A lighthouse at night project light out in the sky" />
     </picture>
     <picture>
-      <source media="(max-width: 400px)" srcset="res/img00006.jpg">
+      <source media="(hover: none) and (pointer: coarse)" srcset="res/img00006.jpg">
       <img class="animate__animated hide" src="res/pic00006.jpg" alt="A lighthouse at night project light out in the sky" />
     </picture>
     
-    <!-- <img class="animate__animated show" src="res/pic00001.jpg" alt="A lighthouse at night projecting light"> -->
-    <!-- <img class="animate__animated hide" src="res/pic00002.jpg" alt="A lighthouse at night projecting light">
-    <img class="animate__animated hide" src="res/pic00003.jpg" alt="A lighthouse at night projecting light">
-    <img class="animate__animated hide" src="res/pic00004.jpg" alt="A lighthouse at night projecting light">
-    <img class="animate__animated hide" src="res/pic00005.jpg" alt="A lighthouse at night projecting light">
-    <img class="animate__animated hide" src="res/pic00006.jpg" alt="A lighthouse at night projecting light"> -->
   </main>
   <div class="toast-message hide-toast">
     <span class="message"></span>
   </div>
-  <script src="js/index.js"></script>
 </body>
 </html>

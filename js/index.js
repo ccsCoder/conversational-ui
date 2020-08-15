@@ -4,14 +4,17 @@ class ImageCarousel {
     this.current = 0;
     this.images = null;
     this.toastContainer = null;
+    this.init = this.init.bind(this);
+    this.next = this.next.bind(this);
+    this.toast = this.toast.bind(this);
   }
 
-  init = () => {
+  init() {
     this.images = document.querySelector('.img-container').querySelectorAll('img');
     this.toastContainer = document.querySelector('.toast-message');
   }
 
-  next = (isPrev = false) => {
+  next(isPrev = false) {
     // hide the current image
     this.images[this.current].classList.remove('show');
     this.images[this.current].classList.add('hide');
@@ -30,11 +33,11 @@ class ImageCarousel {
     this.images[this.current].classList.add('show');
   }
 
-  autoPlay = () => {
+  autoPlay() {
     // setInterval(this.next, 5000);
   }
 
-  toast = message => {
+  toast(message) {
     this.toastContainer.querySelector('span').innerText = message;
     this.toastContainer.classList.add('show-toast');
     // hide after 2 s.
@@ -50,18 +53,20 @@ class SpeechSynth {
   constructor() {
     this.speech = new SpeechSynthesisUtterance('');
     this.speech.lang = 'en-IN';
-
+    this.speak = this.speak.bind(this);
+    this.assignINVoice = this.assignINVoice.bind(this);
     speechSynthesis.onvoiceschanged = this.assignINVoice;
+
   }
   
-  speak = message => {
+  speak(message) {
     this.assignINVoice();
     this.speech.text = message;
     this.speech.rate = .8;
     speechSynthesis.speak(this.speech);
   }
 
-  assignINVoice = () => {
+  assignINVoice() {
     const veenaVoice = speechSynthesis.getVoices().find(voice => voice.name == 'Veena');
     if (veenaVoice) {
       this.speech.voice = veenaVoice;
@@ -79,13 +84,22 @@ class SpeechRecognizer {
   constructor() {
     // normalize speech recognition...
     window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
-
+    if (!window.SpeechRecognition) {
+      // we do not have speech recognition capabilities. Bail out.
+      alert('Your browser does not support Speech Recognition. Please use Desktop Chrome to run the Demo.');
+      throw 'SpeechRecognition API not supported!';
+    }
+    // Throw would break the normal flow
     this.recognizer = new window.SpeechRecognition();
     this.recognizer.continuous = true;
     this.recognizer.onresult = this.onRecognition;
+
+    this.onRecognition = this.onRecognition.bind(this);
+    this.start = this.start.bind(this);
+    this.stop = this.stop.bind(this);
   }
   
-  onRecognition = e => {
+  onRecognition(e) {
     const latestRecognition = e.results[e.results.length - 1][0];
     if (latestRecognition.transcript.trim() === COMMANDS.NEXT) {
       imageCarousel.next();
@@ -103,12 +117,12 @@ class SpeechRecognizer {
     }
   }
   
-  start = () => {
+  start() {
     setTimeout(() => speechSynth.speak('I am ready.'), 200);
     this.recognizer.start();
   }
 
-  stop = () => {
+  stop() {
     this.recognizer.stop();
   }
   

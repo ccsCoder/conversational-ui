@@ -125,26 +125,26 @@ h1, h2 {
 
 /* MEDIA QUERIES */
 
-@media only screen
-  and (max-width: 400px) {
-    header {
-      height: 75px;
-    }
-
-    h1 {
-      font-size: 2rem;
-    }
-
-    svg.icon {
-      height: 30px;
-      width: 30px;
-    }
-
-    .toast-message {
-      font-size: 1.2rem;
-    }
-
-    .toast-message > span {
-      display: block;
-    }
+  /* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+  header {
+    height: 75px;
   }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  svg.icon {
+    height: 30px;
+    width: 30px;
+  }
+
+  .toast-message {
+    font-size: 1.2rem;
+  }
+
+  .toast-message > span {
+    display: block;
+  }
+}
